@@ -122,23 +122,102 @@
 // }
 
 // thread
-#include <thread>
-#include <vector>
+// #include <thread>
+// void function1(const std::string& param)
+// {
+//     for (int i = 0; i < 5; ++i)
+//     {
+//         std::cout << "Function 1 is executing " << param << std::endl;
+//     }
+// }
 
-void function1()
+// void function2(const std::string& param)
+// {
+//     for (int i = 0; i < 5; ++i)
+//     {
+//         std::cout << "Function 2 is executing " << param << std::endl;
+//     }
+// }
+
+// int main()
+// {
+//     // Create a thread using function pointer
+//     std::thread thread1(function1, "Thread 1");
+//     std::thread thread2(function2, "Thread 2");
+
+//     // Wait for the threads to finish
+//     thread1.join();
+//     thread2.join();
+//     return 0;
+// }
+
+// mutex
+// #include <thread>
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// #include <mutex>
+
+// std::mutex mtx; // Mutex for synchronizing access to shared data
+// std::vector<int> sharedData; // Shared data
+// // Function to be executed by each thread
+// void threadFunction(int id)
+// {
+//     // Lock the mutex to access shared data
+//     // mtx.lock();
+//     std::lock_guard<std::mutex> lock(mtx); // Automatically unlocks when going out of scope
+//     for (int i = 0; i < 5; ++i)
+//     {
+//         sharedData.push_back(id * 10 + i);
+//         std::cout << "Thread " << id << " added value: " << id * 10 + i << std::endl;
+//     }
+//     mtx.unlock(); // Unlock the mutex
+// }
+// int main()
+// {
+//     std::vector<std::thread> threads;
+
+//     // Create and start multiple threads
+//     for (int i = 0; i < 3; ++i)
+//     {
+//         threads.push_back(std::thread(threadFunction, i));
+//     }
+
+//     // Wait for all threads to finish
+//     for (auto& t : threads)
+//     {
+//         t.join();
+//     }
+
+//     // Print the shared data
+//     std::cout << "Shared data: ";
+//     for (const auto& value : sharedData)
+//     {
+//         std::cout << value << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// default and delete
+#include <iostream>
+class MyClass
 {
-    for (int i = 0; i < 5; ++i)
-    {
-        std::cout << "Function 1 is executing" << std::endl;
+public:
+    MyClass() = default; // Default constructor
+    MyClass(const MyClass&) = delete; // Delete copy constructor
+    MyClass& operator=(const MyClass&) = delete; // Delete copy assignment operator
+    void display() const {
+        std::cout << "MyClass object" << std::endl;
     }
-}
+};
 
 int main()
 {
-    // Create a thread using function pointer
-    std::thread thread1(function1);
-
-    // Wait for the threads to finish
-    thread1.join();
+    MyClass obj1; // OK: default constructor
+    // MyClass obj2(obj1); // Error: copy constructor is deleted
+    // MyClass obj3 = obj1; // Error: copy constructor is deleted
+    obj1.display();
     return 0;
 }
