@@ -1,9 +1,11 @@
 # Use the official Ubuntu base image
 FROM ubuntu:latest
 
-# Update the package list and install SSH and net-tools (which includes ifconfig)
+# Update the package list and install SSH and Python (required for Ansible)
 RUN apt-get update && apt-get install -y \
     openssh-server \
+    python3 \
+    python3-pip \
     net-tools \
     vim
 
