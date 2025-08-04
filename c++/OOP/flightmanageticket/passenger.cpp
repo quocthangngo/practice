@@ -1,9 +1,11 @@
 #include "passenger.h"
-#include "ticket.h"
 #include "human.h"
+#include "ticket.h"
 
 Passenger::~Passenger() {
     delete[] ticket;
+}
+Passenger::Passenger() {
 }
 void Passenger::input() {
     Human::input();

@@ -1,3 +1,7 @@
+#ifndef HUMAN_H
+#define HUMAN_H
+
+
 #include <iostream>
 #include <string>
 
@@ -9,8 +13,10 @@ private:
     string sex;
 public:
     Human();
-    ~Human();
+    virtual ~Human();
     
     void input();
     void output() const;
 };
+
+#endif

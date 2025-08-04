@@ -18,3 +18,12 @@ void Ticket::output() const {
 float Ticket::getPrice() const {
     return price;
 }
+
+Ticket::Ticket() {
+    // Default constructor initializes members to default values
+}
+
+Ticket::~Ticket() {
+    // No special cleanup needed
+    // Destructor is empty as there are no dynamically allocated resources
+}

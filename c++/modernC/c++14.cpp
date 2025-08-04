@@ -44,18 +44,31 @@
 // }
 
 //Generic lambdas
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     // Generic lambda (C++14)
+//     auto print_sum = [](auto a, auto b) {
+//         cout << "Sum: " << a + b << endl;
+//     };
+
+//     print_sum(3, 4);           // int
+//     print_sum(2.5, 4.1);       // double
+//     print_sum(string("Hi "), string("there")); // string
+
+//     return 0;
+// }
+
+//std::make_unique
 #include <iostream>
+#include <memory>
 using namespace std;
-
 int main() {
-    // Generic lambda (C++14)
-    auto print_sum = [](auto a, auto b) {
-        cout << "Sum: " << a + b << endl;
-    };
+    // Using std::make_unique (C++14)
+    auto ptr = make_unique<int>(42); // Create a unique_ptr to an int with value 42
 
-    print_sum(3, 4);           // int
-    print_sum(2.5, 4.1);       // double
-    print_sum(string("Hi "), string("there")); // string
+    cout << "Value pointed by ptr: " << *ptr << endl; // Output: Value pointed by ptr: 42
 
     return 0;
 }

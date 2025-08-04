@@ -13,3 +13,11 @@ void Human::output() const {
     cout << "Age: " << age << endl;
     cout << "Sex: " << sex << endl;
 }
+
+Human::~Human() {
+    // No special cleanup needed
+    // Destructor is empty as there are no dynamically allocated resources
+}
+
+Human::Human(){
+}
